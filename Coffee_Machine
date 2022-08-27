@@ -1,0 +1,118 @@
+water = 400
+milk = 540
+coffee_beans = 120
+cups = 9
+dollars = 550
+
+while True:
+
+    def information():
+        print(f'''The coffee machine has:
+{water} ml of water
+{milk} ml of milk
+{coffee_beans} g of coffee beans
+{cups} disposable cups
+${dollars} of money''')
+        print()
+
+
+    class Action:
+
+        def buy(self):
+            global water
+            global coffee_beans
+            global cups
+            global dollars
+            global milk
+            print()
+            print('What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino:, back - to main menu:')
+            human = input()
+
+            if human == '1':
+                if water > 250 and coffee_beans > 16:
+                    water -= 250
+                    coffee_beans -= 16
+                    cups -= 1
+                    dollars += 4
+                    print('I have enough resources, making you a coffee!')
+                    print()
+                else:
+                    if water < 250:
+                        print('Sorry, not enough water!')
+                    elif coffee_beans < 16:
+                        print('Sorry, not enough coffee beans!')
+
+            elif human == '2':
+                if water > 350 and milk > 75 and coffee_beans > 20:
+                    water -= 350
+                    milk -= 75
+                    coffee_beans -= 20
+                    cups -= 1
+                    dollars += 7
+                    print('I have enough resources, making you a coffee!')
+                    print()
+                else:
+                    if water < 350:
+                        print('Sorry, not enough water!')
+                    elif milk < 75:
+                        print('Sorry, not enough milk!')
+                    elif coffee_beans < 20:
+                        print('Sorry, not enough coffee beans!')
+
+            elif human == '3':
+                if water > 200 and milk > 100 and coffee_beans > 12:
+                    water -= 200
+                    milk -= 100
+                    coffee_beans -= 12
+                    cups -= 1
+                    dollars += 6
+                    print('I have enough resources, making you a coffee!')
+                    print()
+                else:
+                    if water < 200:
+                        print('Sorry, not enough water!')
+                    elif milk < 100:
+                        print('Sorry, not enough milk!')
+                    elif coffee_beans < 12:
+                        print('Sorry, not enough coffee beans!')
+
+            elif human == 'back':
+                print()
+
+        def fill(self):
+            global water
+            global coffee_beans
+            global cups
+            global milk
+            print()
+            water_add = int(input('Write how many ml of water you want to add:'))
+            milk_add = int(input('Write how many ml of milk you want to add: '))
+            coffee_beans_add = int(input('Write how many grams of coffee beans you want to add:'))
+            cups_add = int(input('Write how many disposable cups you want to add:'))
+            water += water_add
+            milk += milk_add
+            coffee_beans += coffee_beans_add
+            cups += cups_add
+            print()
+
+        def take(self):
+            global dollars
+            print('I gave you $550')
+            dollars = 0
+            print()
+
+
+    object_action = Action()
+    user_input = input('Write action (buy, fill, take, remaining, exit):')
+
+    if user_input == 'buy':
+        object_action.buy()
+    elif user_input == 'fill':
+        object_action.fill()
+    elif user_input == 'take':
+        object_action.take()
+    elif user_input == 'remaining':
+        information()
+    elif user_input == 'exit':
+        break
+
